@@ -1,6 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import axios from "axios"
 
-export default function Service() {
+export default function Service({token}) {
+
+  useEffect(()=>{
+    async function getData() {
+      let res = axios.get("http://localhost:8080/api/movies/list",{
+        headers:{
+          "Authorization" : `Bearer ${token}`
+        }
+      });
+      console.log(res.data);
+    }
+  },[])
+
   return (
     <div>
         <center>
